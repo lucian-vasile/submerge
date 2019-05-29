@@ -1,0 +1,40 @@
+#!/bin/bash
+echo off
+
+# check if already submerged
+submerged_file=$(ls --sort=size *.ROSUB.mkv 2>/dev/null | head -n1)
+
+if [ "$submerged_file" != "" ]
+then
+	echo "It looks like the subtitle has been merged."
+	exit 1
+fi
+
+# mkv stuff
+original_file=$(ls --sort=size *.mkv 2>/dev/null | head -n1)
+
+filename=$(basename -- "$original_file")
+extension="${filename##*.}"
+filename="${filename%.*}"
+
+if [ "$filename" == "" ]
+then
+        echo "No *.mkv file found"
+        exit 1
+fi
+
+# subtitle stuff
+subtitle=$(ls *.sub 2>/dev/null | sort -s | head -n1)
+
+if [ "$subtitle" == "" ]
+then
+	subtitle=$(ls *.srt 2>/dev/null | sort -s | head -n1)
+fi
+
+if [ "$subtitle" == "" ]
+then
+	echo "Subtitle not found"
+	exit 1
+fi
+
+mkvmerge -o "$filename.ROSUB.mkv" --default-track 0 --sub-charset 0:ISO-8859-2 --language 0:Romanian "$subtitle" "$original_file"
