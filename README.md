@@ -6,6 +6,14 @@ The ISO-8859-2 (central european standard) and the $old_filename.ROSUB.$extensio
 
 ## installation 
 
+### dependecies
+
+`mkvmerge` is a dependency
+
+can be installed running
+
+`sudo apt-get install mkvtoolnix`
+
 ### ubuntu,debian
 
 `git clone git@github.com:lucian-vasile/submerge.git`
