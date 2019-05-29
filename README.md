@@ -6,11 +6,11 @@ The ISO-8859-2 (central european standard) and the $old_filename.ROSUB.$extensio
 
 ## installation 
 
-### ubunntu,debian
+### ubuntu,debian
 
 `git clone git@github.com:lucian-vasile/submerge.git`
 
-`ln -s ./submerge/submerge /usr/bin/submerge`
+`ln -s /path/to/submerge/submerge /usr/bin/submerge`
 
 ## usage
 
